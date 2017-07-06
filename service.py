@@ -36,8 +36,7 @@ def atDesk(name):
     # TODO:
     # Query accelerometer data
 
-    message = "{} is at their desk!".format(username)
-    print(message)
+    message = "{} is at their desk!".format(name)
     netUtil.sendMessage(message, None)
 
     return 200
