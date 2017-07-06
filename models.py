@@ -39,8 +39,36 @@ class AccelerometerData(Base):
         self.x = x
         self.y = y
         self.z = z
-        self.train = train
-        self.calculated = calculated
+
+    def __repr__(self):
+        return '<Name %r>' % self.id
+
+class TrainingData(Base):
+    __tablename__ = 'training_data'
+
+    user_id = db.Column(db.Integer)
+    time = db.Column(db.DateTime)
+    state = db.Column(db.Boolean)
+
+    def __init__(self, user_id, time, state):
+        self.user_id = user_id
+        self.time = time
+        self.state = state
+
+    def __repr__(self):
+        return '<Name %r>' % self.id
+
+class ProductionData(Base):
+    __tablename__ = 'production_data'
+
+    user_id = db.Column(db.Integer)
+    time = db.Column(db.DateTime)
+    state = db.Column(db.Boolean)
+
+    def __init__(self, user_id, time, state):
+        self.user_id = user_id
+        self.time = time
+        self.state = state
 
     def __repr__(self):
         return '<Name %r>' % self.id
