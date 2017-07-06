@@ -40,7 +40,7 @@ def atDesk(name):
     return 200
 
 def report():
-    with open("alert.json") as json_file:
+    with open("alerts.json") as json_file:
         alerts = json.load(json_file)
         message = alerts['report_status'].format(10, "20 minutes", "8hrs")
         netUtil.sendMessage(None, message)
@@ -48,7 +48,7 @@ def report():
     return 200
 
 def alert():
-    with open("alert.json") as json_file:
+    with open("alerts.json") as json_file:
         alerts = json.load(json_file)
         message = alerts['alarm_home']
         netUtil.sendMessage(message, None)
