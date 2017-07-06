@@ -49,7 +49,9 @@ class User(Resource):
         return 200
 class Command(Resource):
     def post(self):
+        #if config.bot['id'] not in jsonData["mentionedPeople"]:
         json_data = request.get_json(force=True)
+        print(json_data)
         print(json_data)
         message = netUtil.getMessage(json_data['data']['id'])
         text = message['text'].replace("\'", "\"")
@@ -60,7 +62,7 @@ class Command(Resource):
         if command.lower() == "report":
             return service.atDesk()
         else:
-            return service.atDesk(command)
+            #return service.atDesk(command)
 
         return 200
 
