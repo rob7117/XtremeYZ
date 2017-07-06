@@ -22,7 +22,7 @@ class User(Base):
         return '<Name %r>' % self.name
 
 class AccelerometerData(Base):
-    __tablename__ = 'accelerometer_data'
+    __tablename__ = 'accelerometerdata'
 
     user_id = db.Column(db.Integer)
     time = db.Column(db.DateTime)
@@ -43,7 +43,7 @@ class AccelerometerData(Base):
         return '<Name %r>' % self.id
 
 class TrainingData(Base):
-    __tablename__ = 'training_data'
+    __tablename__ = 'trainingdata'
 
     user_id = db.Column(db.Integer)
     time = db.Column(db.DateTime)
@@ -58,7 +58,7 @@ class TrainingData(Base):
         return '<Name %r>' % self.id
 
 class ProductionData(Base):
-    __tablename__ = 'production_data'
+    __tablename__ = 'productiondata'
 
     user_id = db.Column(db.Integer)
     time = db.Column(db.DateTime)

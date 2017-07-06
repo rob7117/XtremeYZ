@@ -20,7 +20,9 @@ class Accelerometer(Resource):
     def post(self):
         json_data = request.get_json(force=True)
 
-        return 'Invalid Command', 400
+        print(json_data)
+
+        return 200
 
 class TrainingState(Resource):
     def post(self):
@@ -42,7 +44,7 @@ class User(Resource):
 
         service.createUser(json_data)
 
-        return 'Invalid Command', 400
+        return 200
 
 api.add_resource(User, '/user')
 api.add_resource(Accelerometer, '/accelerometer')
