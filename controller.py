@@ -10,7 +10,6 @@ app = Flask(__name__)
 api = Api(app)
 
 parser = reqparse.RequestParser()
-parser.add_argument('data')
 
 @app.route("/ping")
 def ping():
@@ -28,8 +27,8 @@ class TrainingState(Resource):
     def post(self):
         args = parser.parse_args()
 
-        jsonData = json.load(args.data)
-        
+        jsonData = json.load(args)
+
         print(jsonData)
         return 'Invalid Command', 400
 
