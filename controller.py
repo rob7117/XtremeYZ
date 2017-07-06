@@ -44,7 +44,7 @@ class User(Resource):
 
         return 'Invalid Command', 400
 
-api.add_resource(Accelerometer, '/user')
+api.add_resource(User, '/user')
 api.add_resource(Accelerometer, '/accelerometer')
 api.add_resource(TrainingState, '/trainingstate')
 api.add_resource(ProductionState, '/productionstate')
