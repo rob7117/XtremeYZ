@@ -27,8 +27,7 @@ class Accelerometer(Resource):
 class TrainingState(Resource):
     def post(self):
         args = parser.parse_args()
-        jsonString = json.dumps(ast.literal_eval(args.data))
-        data = json.loads(jsonString)
+        data = json.loads(args.data)
 
         return 'Invalid Command', 400
 
