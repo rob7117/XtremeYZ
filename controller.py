@@ -49,22 +49,21 @@ class User(Resource):
         return 200
 class Command(Resource):
     def post(self):
-        #if config.bot['id'] not in jsonData["mentionedPeople"]:
         json_data = request.get_json(force=True)
-        print(json_data)
-        print(json_data)
-        message = netUtil.getMessage(json_data['data']['id'])
-        text = message['text'].replace("\'", "\"")
-        words = text.split()
-        command = words[0]
+        if config.bot['id'] != json_data['id']:
+            print(json_data)
+            message = netUtil.getMessage(json_data['data']['id'])
+            text = message['text'].replace("\'", "\"")
+            words = text.split()
+            command = words[0]
 
-        # Open Commands
-        if command.lower() == "report":
-            return service.atDesk()
-        
-            #return service.atDesk(command)
+            # Open Commands
+            if command.lower() == "report":
+                return service.atDesk()
+            else:
+                return service.atDesk(command)
 
-        return 200
+            return 200
 
 
 api.add_resource(Command, '/command')
