@@ -1,6 +1,6 @@
 {
     "current_status": "**Status Update**<br>You have been sitting *{}* .<br>Your last desk escape attempt was *{}* for *{}* minutes.",
     "report_status": "**Your Daily Report!**<br>You have left your desk {} times.<br>You have left your desk for *{}*.<br>You spent *{}* at your desk today.",
-    "alarm_away": "# **Action Required**<br>**Please Return to your Desk!**<br>The hounds have been released.",
-    "alarm_home": "# **Action Required**<br>**Please Leave to your Desk!**<br>You have been sitting for too long.<br>Have a break, have a kitkat!<br>Disclaimer: Not sponsored by KitKat."
+    "alarm_away": "**Action Required**<br>**Please Return to your Desk!**<br>The hounds have been released.",
+    "alarm_home": "**Action Required**<br>**Please Leave to your Desk!**<br>You have been sitting for too long.<br>Have a break, have a kitkat!<br>Disclaimer: Not sponsored by KitKat."
 }
