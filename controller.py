@@ -3,7 +3,7 @@ import netUtil
 import json
 import ast
 import service
-from flask import Flask
+from flask import Flask, request
 from flask_restful import reqparse, Resource, Api
 
 app = Flask(__name__)
@@ -26,10 +26,12 @@ class Accelerometer(Resource):
 
 class TrainingState(Resource):
     def post(self):
-        args = parser.parse_args()
-        data = json.loads(args.data)
+        json_data = request.get_json(force=True)
+        print(json_data)
+        #args = parser.parse_args()
+        #data = json.loads(args.data)
 
-        return 'Invalid Command', 400
+        return 200
 
 
 class ProductionState(Resource):
