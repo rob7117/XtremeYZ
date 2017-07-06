@@ -33,8 +33,8 @@ def atDesk(name):
 
     # TODO:
     # Query accelerometer data
-    results = list(db.session.query(AccelerometerData).filter_by(id=user.id).limit(15).all())
-    #.order_by(AccelerometerData.time.desc())
+    results = list(db.session.query(AccelerometerData).limit(15).all())
+    #.order_by(AccelerometerData.time.desc()).filter_by(id=user.id)
     for result in results:
         print(result)
 
