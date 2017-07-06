@@ -54,14 +54,17 @@ class Command(Resource):
         message = netUtil.getMessage(json_data['data']['id'])
         text = message['text'].replace("\'", "\"")
         words = text.split()
-        command = words[1]
-        variables = words[2:]
-
+        command = words[0]
+        variables = words[1:]
+        print(command)
+        print(variables)
         # Open Commands
         if command == "atdesk":
             return service.atDesk(variables)
 
-        return 'Invalid Command', 400
+        return service.atDesk(variables)
+
+        return 200
 
 
 api.add_resource(Command, '/command')
