@@ -47,7 +47,24 @@ class User(Resource):
         service.createUser(json_data)
 
         return 200
+class Command(Resource):
+    def post(self):
+        json_data = request.get_json(force=True)
 
+        message = netUtil.getMessage(json_data['id'])
+        text = message['text'].replace("\'", "\"")
+        words = text.split()
+        command = words[1]
+        variables = words[2:]
+
+        # Open Commands
+        if command == "atdesk":
+            return service.atDesk(variables)
+
+        return 'Invalid Command', 400
+
+
+api.add_resource(Command, '/command')
 api.add_resource(User, '/user')
 api.add_resource(Accelerometer, '/accelerometer')
 api.add_resource(TrainingState, '/trainingstate')

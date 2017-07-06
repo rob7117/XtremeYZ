@@ -4,9 +4,9 @@ import config
 messageUrl = 'https://api.ciscospark.com/v1/messages'
 headers = {"Authorization":"Bearer {}".format(config.bot['token'])}
 
-def sendMessage(text, markdown, roomId):
+def sendMessage(text, markdown):
     data = {
-        "roomId":roomId,
+        "roomId":config.roomId,
         "text":text,
         "markdown":markdown
     }

@@ -1,6 +1,8 @@
 bot = dict(
-    token = '',
-    id = ''
+    token = 'MjNiYjZjYWEtNjIzNC00ZjZmLTgyNmItN2MwZTAwZjA3YTZkMWU5Y2Q2NWQtNGZk',
+    id = 'Y2lzY29zcGFyazovL3VzL01FTUJFUlNISVAvZDhlOGU1YWQtY2U4Yy00NTcxLWJkZjQtY2EyNzg1NDM0ZWMxOjJjOGRiNjg5LTg2NmQtM2VmNy1hOTUwLTA2NmVlMTc1MjU5MA'
 )
+
+roomId = 'Y2lzY29zcGFyazovL3VzL1JPT00vMmM4ZGI2ODktODY2ZC0zZWY3LWE5NTAtMDY2ZWUxNzUyNTkw'
 
 SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:xyz@localhost/xyz'
