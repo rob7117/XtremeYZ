@@ -65,7 +65,15 @@ class Command(Resource):
 
             return 200
 
+class Alert(Resource):
+    def get(self):
+        json_data = request.get_json(force=True)
 
+        service.alert(json_data)
+
+        return 200
+
+api.add_resource(Alert, '/alert')
 api.add_resource(Command, '/command')
 api.add_resource(User, '/user')
 api.add_resource(Accelerometer, '/accelerometer')

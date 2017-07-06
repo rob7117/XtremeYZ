@@ -2,6 +2,7 @@ from models import db
 from models import *
 from datetime import datetime
 import netUtil
+import json
 
 def enterTrainingState(json):
     user = db.session.query(User).filter_by(name=json['user']).first()
@@ -25,9 +26,6 @@ def createUser(json):
     db.session.commit()
 
 def atDesk(name):
-    #if not len(variables) == 1:
-    #    return 'Incorrect number of arguments provided', 400
-    #username = variables[0]
     user = db.session.query(User).filter_by(name=name).first()
     if user == None:
         netUtil.sendMessage('{} is not in our system'.format(name), None)
@@ -41,8 +39,20 @@ def atDesk(name):
 
     return 200
 
-def report(variables):
-    message = "{} is at their desk!".format(username)
-    netUtil.sendMessage(message, None)
+def report():
+    with open("alert.json") as json_file:
+        alerts = json.load(json_file)
+        message = alerts['report_status'].format(10, "20 minutes", "8hrs")
+        netUtil.sendMessage(message, None)
 
-    return 200
+        return 200
+
+def alert():
+    with open("alert.json") as json_file:
+        alerts = json.load(json_file)
+        message = alerts['alarm_home']
+        netUtil.sendMessage(message, None)
+
+        return 200
+
+        return 200
