@@ -4,7 +4,7 @@ from datetime import datetime
 
 def enterTrainingState(json):
     user = db.session.query(User).filter_by(name=json['user']).first()
-    trainingData = TrainingData(user.id, datetime.now().time(), json['user'])
+    trainingData = TrainingData(user.id, datetime.now(), json['user'])
     db.session.add(trainingData)
     db.session.commit()
 
