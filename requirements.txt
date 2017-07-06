@@ -1,0 +1,7 @@
+Flask
+flask-restful
+requests
+postgresql
+SQLAlchemy
+Flask-SQLAlchemy==2.1
+psycopg

@@ -3,4 +3,4 @@ bot = dict(
     id = ''
 )
 
-SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:test@localhost/foosbot'
+SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:xyz@localhost/xyz'
