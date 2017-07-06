@@ -15,3 +15,6 @@ parser.add_argument('data')
 @app.route("/ping")
 def ping():
     return "XtremeYZ is Online."
+
+if __name__ == "__main__":
+    app.run(debug=True)
