@@ -53,6 +53,4 @@ def alert():
         message = alerts['alarm_home']
         netUtil.sendMessage(message, None)
 
-        return 200
-
-        return 200
+    return 200

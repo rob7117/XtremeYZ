@@ -63,15 +63,9 @@ class Command(Resource):
             else:
                 return service.atDesk(command)
 
-            return 200
-
 class Alert(Resource):
     def post(self):
-        json_data = request.get_json(force=True)
-
-        service.alert(json_data)
-
-        return 200
+        return service.alert()
 
 api.add_resource(Alert, '/alert')
 api.add_resource(Command, '/command')
