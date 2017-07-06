@@ -66,7 +66,7 @@ class Command(Resource):
             return 200
 
 class Alert(Resource):
-    def get(self):
+    def post(self):
         json_data = request.get_json(force=True)
 
         service.alert(json_data)
