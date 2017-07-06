@@ -51,15 +51,15 @@ class Command(Resource):
     def post(self):
         json_data = request.get_json(force=True)
         print(json_data)
-        #message = netUtil.getMessage(json_data['id'])
-        #text = message['text'].replace("\'", "\"")
-        #words = text.split()
-        #command = words[1]
-        #variables = words[2:]
+        message = netUtil.getMessage(json_data['data']['id'])
+        text = message['text'].replace("\'", "\"")
+        words = text.split()
+        command = words[1]
+        variables = words[2:]
 
         # Open Commands
-        #if command == "atdesk":
-        #    return service.atDesk(variables)
+        if command == "atdesk":
+            return service.atDesk(variables)
 
         return 'Invalid Command', 400
 
