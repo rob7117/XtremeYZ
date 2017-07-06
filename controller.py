@@ -59,7 +59,7 @@ class Command(Resource):
 
             # Open Commands
             if command.lower() == "report":
-                return service.atDesk()
+                return service.report()
             else:
                 return service.atDesk(command)
 
