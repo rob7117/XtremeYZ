@@ -43,9 +43,9 @@ def report():
     with open("alert.json") as json_file:
         alerts = json.load(json_file)
         message = alerts['report_status'].format(10, "20 minutes", "8hrs")
-        netUtil.sendMessage(message, None)
+        netUtil.sendMessage(None, message)
 
-        return 200
+    return 200
 
 def alert():
     with open("alert.json") as json_file:
