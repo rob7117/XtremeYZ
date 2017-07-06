@@ -10,6 +10,7 @@ app = Flask(__name__)
 api = Api(app)
 
 parser = reqparse.RequestParser()
+parser.add_argument('data')
 
 @app.route("/ping")
 def ping():
@@ -26,18 +27,17 @@ class Accelerometer(Resource):
 class TrainingState(Resource):
     def post(self):
         args = parser.parse_args()
+        jsonString = json.dumps(ast.literal_eval(args.data))
+        data = json.loads(jsonString)
 
-        jsonData = json.load(args)
-
-        print(jsonData)
         return 'Invalid Command', 400
 
 
 class ProductionState(Resource):
     def post(self):
         args = parser.parse_args()
-
-        jsonData = json.load(args.data)
+        jsonString = json.dumps(ast.literal_eval(args.data))
+        data = json.loads(jsonString)
 
         return 'Invalid Command', 400
 
