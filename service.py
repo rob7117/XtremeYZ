@@ -37,7 +37,7 @@ def atDesk(name):
 
     for result in results:
         print(result)
-    
+
     message = "{} is at their desk!".format(name)
     netUtil.sendMessage(message, None)
 

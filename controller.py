@@ -51,7 +51,6 @@ class Command(Resource):
     def post(self):
         json_data = request.get_json(force=True)
         if config.bot['email'] != json_data['data']['personEmail']:
-            print(json_data)
             message = netUtil.getMessage(json_data['data']['id'])
             text = message['text'].replace("\'", "\"")
             words = text.split()
