@@ -33,7 +33,11 @@ def atDesk(name):
 
     # TODO:
     # Query accelerometer data
+    results = list(db.session.query(AccelerometerData).filter_by(id=user.id).order_by(AccelerometerData.id.desc()).limit(15).all())
 
+    for result in results:
+        print(result)
+    
     message = "{} is at their desk!".format(name)
     netUtil.sendMessage(message, None)
 
