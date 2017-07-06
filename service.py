@@ -26,7 +26,6 @@ def createUser(json):
 
 def atDesk(variables):
     if not len(variables) == 1:
-        print('Incorrect number of arguments provided')
         return 'Incorrect number of arguments provided', 400
     username = variables[0]
     user = db.session.query(User).filter_by(name=username).first()
@@ -37,6 +36,7 @@ def atDesk(variables):
     # Query accelerometer data
 
     message = "{} is at their desk!".format(username)
+    print(message)
     netUtil.sendMessage(message, None)
 
     return 200

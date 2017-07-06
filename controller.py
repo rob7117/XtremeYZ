@@ -56,13 +56,10 @@ class Command(Resource):
         words = text.split()
         command = words[0]
         variables = words[1:]
-        print(command)
-        print(variables)
+
         # Open Commands
         if command == "atdesk":
             return service.atDesk(variables)
-
-        return service.atDesk(variables)
 
         return 200
 
