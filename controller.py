@@ -46,4 +46,4 @@ api.add_resource(TrainingState, '/trainingstate')
 api.add_resource(ProductionState, '/productionstate')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
