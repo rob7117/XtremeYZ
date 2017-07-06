@@ -24,12 +24,13 @@ def createUser(json):
     db.session.add(user)
     db.session.commit()
 
-def atDesk(variables):
-    if not len(variables) == 1:
-        return 'Incorrect number of arguments provided', 400
-    username = variables[0]
-    user = db.session.query(User).filter_by(name=username).first()
+def atDesk(name):
+    #if not len(variables) == 1:
+    #    return 'Incorrect number of arguments provided', 400
+    #username = variables[0]
+    user = db.session.query(User).filter_by(name=name).first()
     if user == None:
+        netUtil.sendMessage('{} is not in our system'.format(name), None)
         return 'User not found', 404
 
     # TODO:
@@ -37,6 +38,12 @@ def atDesk(variables):
 
     message = "{} is at their desk!".format(username)
     print(message)
+    netUtil.sendMessage(message, None)
+
+    return 200
+
+def report(variables):
+    message = "{} is at their desk!".format(username)
     netUtil.sendMessage(message, None)
 
     return 200

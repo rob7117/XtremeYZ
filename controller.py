@@ -55,11 +55,12 @@ class Command(Resource):
         text = message['text'].replace("\'", "\"")
         words = text.split()
         command = words[0]
-        variables = words[1:]
 
         # Open Commands
-        if command.lower() == "atdesk":
-            return service.atDesk(variables)
+        if command.lower() == "report":
+            return service.atDesk()
+        else:
+            return service.atDesk(command)
 
         return 200
 
