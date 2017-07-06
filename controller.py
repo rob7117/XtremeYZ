@@ -26,7 +26,7 @@ class TrainingState(Resource):
     def post(self):
         json_data = request.get_json(force=True)
 
-        service.insertTraininState(json_data)
+        service.enterTrainingState(json_data)
 
         return 200
 
