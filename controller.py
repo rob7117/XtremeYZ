@@ -58,7 +58,7 @@ class Command(Resource):
         variables = words[1:]
 
         # Open Commands
-        if command == "atdesk":
+        if command == "atDesk":
             return service.atDesk(variables)
 
         return 200
