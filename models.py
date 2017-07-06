@@ -32,7 +32,7 @@ class AccelerometerData(Base):
     train = db.Column(db.Boolean)
     calculated = db.Column(db.Boolean)
 
-    def __init__(self, user_id, time, x, y, z, train, calculated):
+    def __init__(self, user_id, time, x, y, z):
         self.user_id = user_id
         self.time = time
         self.x = x

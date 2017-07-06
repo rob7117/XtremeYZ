@@ -12,6 +12,12 @@ def enterTrainingState(json):
     db.session.add(trainingData)
     db.session.commit()
 
+def enterAccelerometerdata(json):
+    user = db.session.query(User).filter_by(name=json['user']).first()
+    accelerometerdata = AccelerometerData(user.id, datetime.now(), json['x'], json['y'], json['z'])
+    db.session.add(accelerometerdata)
+    db.session.commit()
+
 def createUser(json):
     user = User(json['name'])
     db.session.add(user)
