@@ -18,27 +18,22 @@ def ping():
 
 class Accelerometer(Resource):
     def post(self):
-        args = parser.parse_args()
-
-        jsonData = json.load(args.data)
+        json_data = request.get_json(force=True)
 
         return 'Invalid Command', 400
 
 class TrainingState(Resource):
     def post(self):
         json_data = request.get_json(force=True)
-        print(json_data)
-        #args = parser.parse_args()
-        #data = json.loads(args.data)
+
+        service.insertTraininState(json_data)
 
         return 200
 
 
 class ProductionState(Resource):
     def post(self):
-        args = parser.parse_args()
-        jsonString = json.dumps(ast.literal_eval(args.data))
-        data = json.loads(jsonString)
+        json_data = request.get_json(force=True)
 
         return 'Invalid Command', 400
 
