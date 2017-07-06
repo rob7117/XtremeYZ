@@ -51,6 +51,6 @@ def alert():
     with open("alerts.json") as json_file:
         alerts = json.load(json_file)
         message = alerts['alarm_home']
-        netUtil.sendMessage(message, None)
+        netUtil.sendMessage(None, message)
 
     return 200
