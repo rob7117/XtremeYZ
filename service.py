@@ -7,3 +7,8 @@ def enterTrainingState(json):
     trainingData = TrainingData(user.id, datetime.now().time(), json['user'])
     db.session.add(trainingData)
     db.session.commit()
+
+def createUser(json):
+    user = User(json['name'])
+    db.session.add(user)
+    db.session.commit()

@@ -30,13 +30,21 @@ class TrainingState(Resource):
 
         return 200
 
-
 class ProductionState(Resource):
     def post(self):
         json_data = request.get_json(force=True)
 
         return 'Invalid Command', 400
 
+class User(Resource):
+    def post(self):
+        json_data = request.get_json(force=True)
+
+        service.createUser(json_data)
+
+        return 'Invalid Command', 400
+
+api.add_resource(Accelerometer, '/user')
 api.add_resource(Accelerometer, '/accelerometer')
 api.add_resource(TrainingState, '/trainingstate')
 api.add_resource(ProductionState, '/productionstate')
