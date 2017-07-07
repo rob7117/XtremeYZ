@@ -3,6 +3,9 @@ from models import *
 from datetime import datetime
 import netUtil
 import json
+from sklearn.svm import SVC
+from sklearn.externals import joblib
+import numpy
 
 def enterTrainingState(json):
     user = db.session.query(User).filter_by(name=json['user']).first()
@@ -35,8 +38,15 @@ def atDesk(name):
     # Query accelerometer data
     results = list(db.session.query(AccelerometerData).filter_by(user_id=user.id).order_by(AccelerometerData.time.desc()).limit(15))
 
+    svm = SVC()
+    svm = joblib.load('svm.pkl')
+    x = numpy.array([])
+    arrayvals = numpy.array([])
     for result in results:
-        print('User ID: {}, Date: {}, x: {}, y: {}, z: {}'.format(result.user_id, result.time, result.x, result.y, result.z))
+        value = numpy.array([int(result.x), int(result.y), int(result.z)])
+        numpy.append(arrayvals, value)
+    x = svm.predict(arrayvals)
+    print('predictions: {}'.format())
 
     message = "{} is at their desk!".format(name)
     netUtil.sendMessage(message, None)
