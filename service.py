@@ -39,7 +39,7 @@ def atDesk(name):
     results = list(db.session.query(AccelerometerData).filter_by(user_id=user.id).order_by(AccelerometerData.time.desc()).limit(15))
 
     svm = SVC()
-    svm = joblib.load('/home/svm.pkl')
+    svm = joblib.load('/home/kilmoore/svm.pkl')
     x = numpy.array([])
     arrayvals = numpy.array([])
     for result in results:
