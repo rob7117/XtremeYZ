@@ -20,6 +20,7 @@ def enterTrainingState(json):
 def enterAccelerometerdata(json):
     user = db.session.query(User).filter_by(name=json['user']).first()
     accelerometerdata = AccelerometerData(user.id, datetime.now(), json['x'], json['y'], json['z'])
+    print str(json['x']) + "x  " + str(json['y']) + "y   "
     db.session.add(accelerometerdata)
     db.session.commit()
 
@@ -41,16 +42,31 @@ def atDesk(name):
     svm = SVC()
     svm = joblib.load('/home/kilmoore/svm.pkl')
     x = numpy.array([])
+    vallist = []
     arrayvals = numpy.array([])
-    for result in results:
-        value = numpy.array([int(result.x), int(result.y), int(result.z)])
-        numpy.append(arrayvals, value)
-    x = svm.predict(arrayvals)
-    print('predictions: {}'.format())
+    for result in results:        
+	print "PROCESSING - " + str(result.x) + "x  "+ str(result.y)+ "y  " + str(result.z)+ "z"
+	value = numpy.array([int(result.x), int(result.y), int(result.z)])
+       
+    	x = svm.predict(value)
+	
+	vallist.append(x[0])
+    sitcount = 0
+    standcount = 0
+    for prediction in vallist:
+	if "sitting" in prediction:
+	    sitcount += 1
+	if "walking" in prediction:
+	    standcount += 1
 
-    message = "{} is at their desk!".format(name)
+    if standcount > 8:
+	    message = "{} is not at their desk!".format(name)
+    elif sitcount > 8: 
+	    message = "{} is at their desk!".format(name)
+    else:
+	    message = "{} may or may not be at their desk, I'm not sure :(".format(name)
     netUtil.sendMessage(message, None)
-
+    print vallist
     return 200
 
 def report():
